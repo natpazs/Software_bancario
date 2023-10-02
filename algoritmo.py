@@ -25,13 +25,13 @@ def main():
                     cpf =  int(input("Informe seu cpf:"))
                     saldo = int(input("Informe seu saldo:"))
                     senha = input("Informe sua senha:")
-                    cliente = Cliente(nome, email, cpf, saldo)
-                    cliente.cadastrarCliente(nome,email,cpf,senha)
+                    cliente = Cliente(nome, email, cpf, senha, saldo)
+                    banco.cadastrarCliente(nome,email,cpf,senha, saldo)
                     os.system("pause")
                     os.system("cls")
 
                 case 2:
-                    login = cliente.login(int(input("Informe seu cpf: ")), input("Informe sua senha: "))
+                    login = banco.login(int(input("Informe seu cpf: ")), input("Informe sua senha: "))
                     print(login)
                     os.system("pause")
                     os.system("cls")
@@ -42,9 +42,8 @@ def main():
                             print("01 - Sacar")
                             print("02 - Depositar")
                             print("03 - Transferir")
-                            print("04 - Listar Clientes")
-                            print("05 - Voltar")
-                            print("06 - Sair")
+                            print("04 - Voltar")
+                            print("05 - Sair")
                             menu2 = int(input("Qual opção você deseja \n - "))
                             os.system("pause")
                             os.system("cls")
@@ -67,17 +66,13 @@ def main():
                                     os.system("pause")
                                     os.system("cls")
                                 case 4:
-                                    cliente.listarClientes()
-                                    os.system("pause")
                                     os.system("cls")
                                 case 5:
-                                    os.system("cls")
-                                case 6:
                                     break
                         case _:
                             print("Valor invalido")
 
-                    os.system("pause")
+                            os.system("pause")
                 case 3:
                     break
                 case _:

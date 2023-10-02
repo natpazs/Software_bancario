@@ -1,28 +1,32 @@
+class Banco:
+    def __init__(self, nome, endereco, cnpj,):
+        self.nome = nome
+        self.endereco = endereco
+        self.cnpj = cnpj
+        self.clientes = []
+
+    def getCliente(self, cpf, senha):
+         for cliente in self.clientes:
+            if cliente.cpf == cpf and cliente.senha == senha:
+                return cliente
+
+    def cadastrarCliente(self, nome, email, cpf, senha, saldo):
+        clientee = Cliente(nome, email, cpf, senha, saldo)
+        self.clientes.append(clientee)
+
+    def login(self, cpf, senha):
+        for cliente in self.clientes:
+            if cliente.cpf == cpf and cliente.senha == senha:
+                return "Login feito com sucesso"
+
 class Cliente:
 
-    def __init__(self, nome, email, cpf, saldo):
+    def __init__(self, nome, email, cpf, senha, saldo):
         self.nome = nome
         self.email = email
         self.cpf = cpf
+        self.senha = senha
         self.saldo = saldo
-        self.clientes = {}
-
-    def getClientes(self):
-        return self.clientes
-
-    def cadastrarCliente(self, nome, email, cpf, senha):
-        self.clientes[cpf] = {'Nome': nome, 'Email': email, 'Senha': senha}
-
-    def login(self, cpf, senha):
-        if cpf in self.clientes:
-            if self.clientes[cpf]['Senha'] == senha:
-                return "Login feito com sucesso"
-        else:
-            return "Senha ou usuário incorreto"
-
-    def listarClientes(self):
-        for chave, valor in self.getClientes().items():
-            print(f"Nome: {valor[0]}, Email: {valor[1]}, CPF{chave}")
         
     def saque(self, valor):
         if valor <= self.saldo:
@@ -45,3 +49,6 @@ class Cliente:
             print(f"Valor transferido com sucesso para {destinatario.nome}! Seu saldo agora é de {self.saldo}")
         else:
             print("Valor insuficiente para transferência.")
+
+
+banco = Banco("Banco","Av.Qualquer, Jundiaí, nº123", 12345678901234)
